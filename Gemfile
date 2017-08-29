@@ -44,6 +44,8 @@ group :development, :test do
   gem 'rspec-rails'
   # Fixtures replacement
   gem 'factory_girl_rails'
+  # Matchers
+  gem 'shoulda-matchers'
   # Rubocop for code quality
   gem 'rubocop'
   # Guards:
