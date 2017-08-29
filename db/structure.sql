@@ -43,7 +43,7 @@ CREATE TABLE ar_internal_metadata (
 
 CREATE TABLE models (
     id bigint NOT NULL,
-    name character varying,
+    name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
