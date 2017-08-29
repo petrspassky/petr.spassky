@@ -42,6 +42,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   # Rspec for testing
   gem 'rspec-rails'
+  # Fixtures replacement
+  gem 'factory_girl_rails'
   # Rubocop for code quality
   gem 'rubocop'
   # Guards:
