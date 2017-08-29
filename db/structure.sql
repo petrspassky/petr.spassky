@@ -26,6 +26,38 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: album_models; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE album_models (
+    id bigint NOT NULL,
+    album_id bigint,
+    model_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: album_models_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE album_models_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: album_models_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE album_models_id_seq OWNED BY album_models.id;
+
+
+--
 -- Name: albums; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -215,6 +247,13 @@ ALTER SEQUENCE sites_id_seq OWNED BY sites.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY album_models ALTER COLUMN id SET DEFAULT nextval('album_models_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY albums ALTER COLUMN id SET DEFAULT nextval('albums_id_seq'::regclass);
 
 
@@ -244,6 +283,14 @@ ALTER TABLE ONLY site_models ALTER COLUMN id SET DEFAULT nextval('site_models_id
 --
 
 ALTER TABLE ONLY sites ALTER COLUMN id SET DEFAULT nextval('sites_id_seq'::regclass);
+
+
+--
+-- Name: album_models_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY album_models
+    ADD CONSTRAINT album_models_pkey PRIMARY KEY (id);
 
 
 --
@@ -303,6 +350,20 @@ ALTER TABLE ONLY sites
 
 
 --
+-- Name: index_album_models_on_album_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_album_models_on_album_id ON album_models USING btree (album_id);
+
+
+--
+-- Name: index_album_models_on_model_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_album_models_on_model_id ON album_models USING btree (model_id);
+
+
+--
 -- Name: index_albums_on_artist_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -347,11 +408,27 @@ ALTER TABLE ONLY albums
 
 
 --
+-- Name: fk_rails_8c979adde5; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY album_models
+    ADD CONSTRAINT fk_rails_8c979adde5 FOREIGN KEY (album_id) REFERENCES albums(id);
+
+
+--
 -- Name: fk_rails_a23da21d85; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY site_models
     ADD CONSTRAINT fk_rails_a23da21d85 FOREIGN KEY (site_id) REFERENCES sites(id);
+
+
+--
+-- Name: fk_rails_bd6ec565ed; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY album_models
+    ADD CONSTRAINT fk_rails_bd6ec565ed FOREIGN KEY (model_id) REFERENCES models(id);
 
 
 --
@@ -373,6 +450,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170829165330'),
 ('20170829165746'),
 ('20170829172225'),
-('20170829172653');
+('20170829172653'),
+('20170829190355');
 
 
