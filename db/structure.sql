@@ -26,6 +26,44 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: albums; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE albums (
+    id bigint NOT NULL,
+    site_id bigint,
+    artist_id bigint,
+    title character varying,
+    url character varying,
+    cover_url character varying,
+    photos integer,
+    photo_url_template character varying,
+    date date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: albums_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE albums_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: albums_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE albums_id_seq OWNED BY albums.id;
+
+
+--
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -177,6 +215,13 @@ ALTER SEQUENCE sites_id_seq OWNED BY sites.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY albums ALTER COLUMN id SET DEFAULT nextval('albums_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY artists ALTER COLUMN id SET DEFAULT nextval('artists_id_seq'::regclass);
 
 
@@ -199,6 +244,14 @@ ALTER TABLE ONLY site_models ALTER COLUMN id SET DEFAULT nextval('site_models_id
 --
 
 ALTER TABLE ONLY sites ALTER COLUMN id SET DEFAULT nextval('sites_id_seq'::regclass);
+
+
+--
+-- Name: albums_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY albums
+    ADD CONSTRAINT albums_pkey PRIMARY KEY (id);
 
 
 --
@@ -250,6 +303,20 @@ ALTER TABLE ONLY sites
 
 
 --
+-- Name: index_albums_on_artist_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_albums_on_artist_id ON albums USING btree (artist_id);
+
+
+--
+-- Name: index_albums_on_site_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_albums_on_site_id ON albums USING btree (site_id);
+
+
+--
 -- Name: index_site_models_on_model_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -261,6 +328,22 @@ CREATE INDEX index_site_models_on_model_id ON site_models USING btree (model_id)
 --
 
 CREATE INDEX index_site_models_on_site_id ON site_models USING btree (site_id);
+
+
+--
+-- Name: fk_rails_124a79559a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY albums
+    ADD CONSTRAINT fk_rails_124a79559a FOREIGN KEY (artist_id) REFERENCES artists(id);
+
+
+--
+-- Name: fk_rails_57ce923362; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY albums
+    ADD CONSTRAINT fk_rails_57ce923362 FOREIGN KEY (site_id) REFERENCES sites(id);
 
 
 --
@@ -289,6 +372,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170829124252'),
 ('20170829165330'),
 ('20170829165746'),
-('20170829172225');
+('20170829172225'),
+('20170829172653');
 
 
