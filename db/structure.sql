@@ -187,6 +187,7 @@ CREATE TABLE site_models (
     site_id bigint NOT NULL,
     model_id bigint NOT NULL,
     nickname character varying,
+    url character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
