@@ -38,6 +38,37 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: artists; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE artists (
+    id bigint NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: artists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE artists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: artists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE artists_id_seq OWNED BY artists.id;
+
+
+--
 -- Name: models; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -146,6 +177,13 @@ ALTER SEQUENCE sites_id_seq OWNED BY sites.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY artists ALTER COLUMN id SET DEFAULT nextval('artists_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY models ALTER COLUMN id SET DEFAULT nextval('models_id_seq'::regclass);
 
 
@@ -169,6 +207,14 @@ ALTER TABLE ONLY sites ALTER COLUMN id SET DEFAULT nextval('sites_id_seq'::regcl
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: artists_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY artists
+    ADD CONSTRAINT artists_pkey PRIMARY KEY (id);
 
 
 --
@@ -242,6 +288,7 @@ SET search_path TO "$user",public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20170829124252'),
 ('20170829165330'),
-('20170829165746');
+('20170829165746'),
+('20170829172225');
 
 
