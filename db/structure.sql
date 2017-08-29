@@ -78,13 +78,46 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: site_models; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE site_models (
+    id bigint NOT NULL,
+    site_id bigint NOT NULL,
+    model_id bigint NOT NULL,
+    nickname character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: site_models_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE site_models_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: site_models_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE site_models_id_seq OWNED BY site_models.id;
+
+
+--
 -- Name: sites; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sites (
     id bigint NOT NULL,
-    title character varying,
-    url character varying,
+    title character varying NOT NULL,
+    url character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
