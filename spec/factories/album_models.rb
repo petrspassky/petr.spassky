@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :album_model do
     album
-    model
+    site_model
   end
 end
