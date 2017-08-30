@@ -75,5 +75,6 @@ guard :rubocop do
   watch(/.+\.rb$/)
   watch(/^Gemfile$/)
   watch(/^Rakefile$/)
+  watch(%r{^bin\/})
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
