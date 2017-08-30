@@ -1,12 +1,3 @@
-sites_data = [
-  {
-    title: 'Femjoy',
-    url: 'https://femjoy.com/'
-  },
-  {
-    title: 'Amour Angels',
-    url: 'http://amourangels.com/'
-  }
-]
-
-Site.create(sites_data)
+require_relative 'seeds/sites'
+require_relative 'seeds/models'
+require_relative 'seeds/albums'
