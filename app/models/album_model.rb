@@ -1,4 +1,4 @@
 class AlbumModel < ApplicationRecord
   belongs_to :album
-  belongs_to :model
+  belongs_to :site_model
 end

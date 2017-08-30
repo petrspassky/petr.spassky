@@ -32,7 +32,7 @@ SET default_with_oids = false;
 CREATE TABLE album_models (
     id bigint NOT NULL,
     album_id bigint,
-    model_id bigint,
+    site_model_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -187,6 +187,7 @@ CREATE TABLE site_models (
     site_id bigint NOT NULL,
     model_id bigint NOT NULL,
     nickname character varying,
+    url character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -357,10 +358,10 @@ CREATE INDEX index_album_models_on_album_id ON album_models USING btree (album_i
 
 
 --
--- Name: index_album_models_on_model_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_album_models_on_site_model_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_album_models_on_model_id ON album_models USING btree (model_id);
+CREATE INDEX index_album_models_on_site_model_id ON album_models USING btree (site_model_id);
 
 
 --
@@ -424,11 +425,11 @@ ALTER TABLE ONLY site_models
 
 
 --
--- Name: fk_rails_bd6ec565ed; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_c5a278a5a4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY album_models
-    ADD CONSTRAINT fk_rails_bd6ec565ed FOREIGN KEY (model_id) REFERENCES models(id);
+    ADD CONSTRAINT fk_rails_c5a278a5a4 FOREIGN KEY (site_model_id) REFERENCES site_models(id);
 
 
 --
