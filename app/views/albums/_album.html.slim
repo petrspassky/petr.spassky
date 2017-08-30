@@ -1,14 +1,15 @@
 .album[id="#{dom_id(album)}"]
-  h1.title
+  h2.title
     = link_to album.title, album.url
     '
     'from
     = link_to album.site_title, album.site_url
+  .models
+    span
+      'Starring:
+      '
+      - album.site_models.each do |model|
+        = link_to model.nickname, model.url
   .image
     = link_to album.url do
-      = image_tag album.cover_url
-  .models
-    ' Starring:
-    '
-    - album.site_models.each do |model|
-      = link_to model.nickname, model.url
+      = image_tag album.cover_url, class: 'img-fluid img-thumbnail mx-auto d-block'
