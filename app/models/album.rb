@@ -4,6 +4,7 @@ class Album < ApplicationRecord
 
   has_many :album_models, dependent: :destroy
   has_many :site_models, through: :album_models
+  has_many :models, through: :site_models
 
   delegate :title, :url, to: :site, prefix: true
 end
