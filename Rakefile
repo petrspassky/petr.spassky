@@ -5,3 +5,8 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+namespace :db do
+  desc 'Drops and recreates DB with all the migrations and seeds'
+  task :reset, 'db:drop', 'db:create', 'db:migrate', 'db:seed'
+end
