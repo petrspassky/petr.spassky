@@ -8,8 +8,11 @@
     span
       'Starring:
       '
-      - album.site_models.each do |model|
-        = link_to model.nickname, model.url
+      strong
+        - album.site_models.each do |model|
+          = link_to model.nickname, model.url
+      ', added on
+      strong = album.date.to_s(:long)
   .image
     = link_to album.url do
       = image_tag album.cover_url, class: 'img-fluid img-thumbnail mx-auto d-block'
