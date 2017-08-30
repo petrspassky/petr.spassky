@@ -2,8 +2,12 @@
   "name": "petr_spassky",
   "private": true,
   "dependencies": {
+    "@rails/webpacker": "^3.0.0",
     "bootstrap": "4.0.0-beta",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.5"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.7.1"
   }
 }
