@@ -7,4 +7,5 @@ class Album < ApplicationRecord
   has_many :models, through: :site_models
 
   delegate :title, :url, to: :site, prefix: true
+  delegate :affiliate_id, :webmaster_account, to: :site, prefix: false
 end
