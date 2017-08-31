@@ -1,4 +1,5 @@
 class Site < ApplicationRecord
+  has_many :albums, dependent: :destroy
   has_many :site_models, dependent: :destroy
   has_many :models, through: :site_models
 

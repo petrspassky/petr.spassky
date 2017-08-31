@@ -57,6 +57,8 @@ group :development, :test do
   gem 'guard-bundler'
   gem 'guard-rspec'
   gem 'guard-rubocop'
+  # Mock web
+  gem 'webmock'
 end
 
 group :development do
