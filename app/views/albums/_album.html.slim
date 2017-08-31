@@ -1,9 +1,9 @@
 .album[id="#{dom_id(album)}"]
   h2.title
-    = link_to album.title, album.url
+    = link_to album.title, album.affiliated_url
     '
     'from
-    = link_to album.site_title, album.site_url
+    = link_to album.site_title, album.affiliated_site_url
   .models
     span
       'Starring:
@@ -12,7 +12,7 @@
         - album.site_models.each do |model|
           = link_to model.nickname, model.url
       ', added on
-      strong = album.date.to_s(:long)
+      strong = album.date
   .image
-    = link_to album.url do
+    = link_to album.affiliated_url do
       = image_tag album.cover_url, class: 'img-fluid img-thumbnail mx-auto d-block'
