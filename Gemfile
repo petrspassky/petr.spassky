@@ -38,6 +38,9 @@ gem 'jbuilder', '~> 2.5'
 # For some reason we need it to make Heroku work with Yarn
 gem 'webpacker'
 
+# Decorator
+gem 'draper'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution
   # and get a debugger console
