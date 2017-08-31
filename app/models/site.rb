@@ -5,4 +5,14 @@ class Site < ApplicationRecord
 
   validates :title, presence: true
   validates :url, presence: true
+
+  # FIXME: Remove hardcoded
+  def affiliate_id
+    '2588917'
+  end
+
+  # FIXME: Remove hardcoded
+  def webmaster_account
+    '927141-0000'
+  end
 end

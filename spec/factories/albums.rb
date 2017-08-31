@@ -7,6 +7,6 @@ FactoryGirl.define do
     url 'https://hosted.femjoy.com/galleries/15724532_bpf413_cok775?affid=2588917'
     photos 24
     date '2017-08-29'
-    image_template 'femjoy_15724532_%.3d.jpg'
+    photo_url_template 'femjoy_15724532_%.3d.jpg'
   end
 end

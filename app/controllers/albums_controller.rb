@@ -1,6 +1,10 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.limit(limit).offset(offset)
+    @albums = Album.
+              includes(:site, :site_models).
+              limit(limit).
+              offset(offset).
+              decorate
   end
 
   private
