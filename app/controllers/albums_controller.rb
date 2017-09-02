@@ -2,6 +2,7 @@ class AlbumsController < ApplicationController
   def index
     @albums = Album.
               includes(:site, :site_models).
+              order(date: :desc).
               limit(limit).
               offset(offset).
               decorate
