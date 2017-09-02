@@ -6,8 +6,8 @@ class FemjoyParser
   end
 
   def perform
-    json_data.each do |album|
-      create_album(album)
+    json_data.each do |album_data|
+      find_or_create_album(album_data)
     end
   end
 
@@ -17,10 +17,6 @@ class FemjoyParser
 
   def json_data
     @json_data ||= JSON.parse(data)
-  end
-
-  def create_album(album_data)
-    find_or_create_album(album_data)
   end
 
   def find_or_create_album(album_data)
