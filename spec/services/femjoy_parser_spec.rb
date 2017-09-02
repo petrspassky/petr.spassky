@@ -31,6 +31,10 @@ RSpec.describe FemjoyParser do
       expect { service.perform }.to change { AlbumModel.count }.by(2)
     end
 
+    it 'creates new artists' do
+      expect { service.perform }.to change { Artist.count }.by(2)
+    end
+
     context 'on second attempt' do
       before do
         service.perform
@@ -50,6 +54,10 @@ RSpec.describe FemjoyParser do
 
       it 'does not create new album models' do
         expect { service.perform }.not_to(change { AlbumModel.count })
+      end
+
+      it 'does not create new artists' do
+        expect { service.perform }.not_to(change { Artist.count })
       end
     end
   end
