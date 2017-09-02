@@ -3,8 +3,8 @@ class FemjoyImporter
   BASE_URL = 'cash.femjoy.com'.freeze
   AFFILIATE_ID = '2588917'.freeze
 
-  def initialize(models = 100)
-    @models = models
+  def initialize(albums = 100)
+    @albums = albums
   end
 
   def perform
@@ -15,12 +15,12 @@ class FemjoyImporter
 
   private
 
-  attr_reader :models
+  attr_reader :albums
 
   def path
     File.join(
       '/export/c1/galleries',
-      models.to_s,
+      albums.to_s,
       fields.join(','),
       '[]/json',
       URI.escape(params.to_json),

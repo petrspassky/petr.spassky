@@ -1,6 +1,6 @@
 module ApplicationHelper
   def prev_url?
-    params[:offset].to_i > 0
+    params[:offset].to_i.positive?
   end
 
   def prev_url(per_page = 20)
