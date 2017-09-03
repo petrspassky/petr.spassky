@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.
+    @albums = base_scope.
               includes(:site, :site_models).
               order(date: :desc).
               limit(limit).
@@ -10,11 +10,11 @@ class AlbumsController < ApplicationController
 
   private
 
-  def offset
-    params[:offset] || 0
+  def base_scope
+    model&.albums || Album.all
   end
 
-  def limit
-    params[:limit] || 20
+  def model
+    @model = Model.find_by(id: params[:model_id])
   end
 end
