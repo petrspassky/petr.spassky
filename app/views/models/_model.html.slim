@@ -1,0 +1,18 @@
+.model[id="#{dom_id(model)}"]
+  h2.title = model.name
+
+  .akas
+    strong AKA:
+    '
+    - model.site_models.each do |site_model|
+      span
+        = site_model.nickname
+
+  .albums
+    strong Albums:
+    '
+    = link_to model.albums.size, model_albums_path(model)
+
+  .image
+    = link_to model.latest_album.affiliated_url do
+      = image_tag model.latest_album.cover_url, class: 'img-fluid img-thumbnail mx-auto d-block'

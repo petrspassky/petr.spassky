@@ -9,8 +9,8 @@
       'Starring:
       '
       strong
-        - album.site_models.each do |model|
-          = link_to model.nickname, model.url
+        - album.site_models.each do |site_model|
+          = link_to site_model.nickname, model_albums_path(site_model.model)
       ', added on
       strong = album.date
   .image
