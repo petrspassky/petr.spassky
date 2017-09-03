@@ -71,9 +71,3 @@ group :development do
   # <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
-
-require 'rbconfig'
-
-if RbConfig::CONFIG['target_os'] =~ /(?i-mx:bsd|dragonfly)/
-  gem 'rb-kqueue', '>= 0.2'
-end
