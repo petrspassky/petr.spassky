@@ -11,7 +11,7 @@ RSpec.describe BellaCashImporter do
     before do
       url = 'http://www.bellacash.com/genlist.php'
       params = {
-        ccbill: '2589061',
+        ccbill: described_class::AFFILIATE_ID,
         paysite: 'all',
         type: 'all',
         imagedisplay: 'normal',

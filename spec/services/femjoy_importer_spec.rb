@@ -16,7 +16,7 @@ RSpec.describe FemjoyImporter do
           models,title,url,artist,archive,date,thumb/
           %5B%5D/json/
           %7B%22s%22:%22date-desc%22,%22r%22:%7B%22galleries%22:%7B%22s%22:%22cover2_384x384%22%7D%7D%7D/
-          2588917
+          #{described_class::AFFILIATE_ID}
         URL
         stub_request(:get, url).to_return(status: 200, body: data)
       end
@@ -42,7 +42,7 @@ RSpec.describe FemjoyImporter do
           models,title,url,artist,archive,date,thumb/
           %5B%5D/json/
           %7B%22s%22:%22date-desc%22,%22r%22:%7B%22galleries%22:%7B%22s%22:%22r-578x325%22%7D%7D%7D/
-          2588917
+          #{described_class::AFFILIATE_ID}
         URL
         stub_request(:get, url).to_return(status: 200, body: data)
       end

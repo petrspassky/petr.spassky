@@ -1,7 +1,7 @@
 class BellaCashImporter
   # TODO: move to config
   GENLIST_URL = 'http://www.bellacash.com/genlist.php'.freeze
-  AFFILIATE_ID = '2589061'.freeze
+  AFFILIATE_ID = '2589127'.freeze
 
   def perform
     html_data = Net::HTTP.post_form(URI(GENLIST_URL), params).body
