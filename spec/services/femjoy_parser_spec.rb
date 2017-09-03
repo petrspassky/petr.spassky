@@ -16,11 +16,11 @@ RSpec.describe FemjoyParser do
     end
 
     it 'creates new models' do
-      expect { service.perform }.to change { Model.count }.by(2)
+      expect { service.perform }.to change { Model.count }.by(3)
     end
 
     it 'creates new site models' do
-      expect { service.perform }.to change { site.site_models.count }.by(2)
+      expect { service.perform }.to change { site.site_models.count }.by(3)
     end
 
     it 'creates new site albums' do
@@ -28,7 +28,7 @@ RSpec.describe FemjoyParser do
     end
 
     it 'creates new album models' do
-      expect { service.perform }.to change { AlbumModel.count }.by(2)
+      expect { service.perform }.to change { AlbumModel.count }.by(3)
     end
 
     it 'creates new artists' do
