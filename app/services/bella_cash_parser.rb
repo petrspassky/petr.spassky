@@ -56,14 +56,14 @@ class BellaCashParser
     Site.find_or_create_by!(title: name, url: site_url(url))
   end
 
-  # http://www.bellagals.com/avadawn/girly/index.php?ccbill=2589061
+  # http://www.bellagals.com/avadawn/girly/index.php?ccbill=2589127
   # ->
   # http://www.bellagals.com/avadawn/girly/tn_01.jpg
   def first_image_url(url)
     URI.join(URI(url), 'tn_01.jpg').to_s
   end
 
-  # http://www.bellagals.com/avadawn/girly/index.php?ccbill=2589061
+  # http://www.bellagals.com/avadawn/girly/index.php?ccbill=2589127
   # ->
   # http://www.bellagals.com/
   def site_url(url)

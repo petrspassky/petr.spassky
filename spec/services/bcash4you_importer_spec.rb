@@ -10,7 +10,7 @@ RSpec.describe Bcash4youImporter do
     before do
       login_url = 'http://www.bcash4you.com/'
       stub_request(:post, login_url).
-        with(body: 'username=2589044&loginsent=1').
+        with(body: "username=#{described_class::AFFILIATE_ID}&loginsent=1").
         to_return(
           status: 302,
           headers: {
