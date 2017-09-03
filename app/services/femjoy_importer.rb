@@ -3,29 +3,39 @@ class FemjoyImporter
   BASE_URL = 'cash.femjoy.com'.freeze
   AFFILIATE_ID = '2588917'.freeze
 
-  def initialize(albums = 100)
+  def initialize(site: 'Femjoy', albums: 100)
+    @site = Site.find_by(title: site)
     @albums = albums
   end
 
   def perform
     data = Net::HTTP.get(BASE_URL, path)
-    site = Site.find_by(title: 'Femjoy')
     FemjoyParser.new(site, data).perform
   end
 
   private
 
-  attr_reader :albums
+  attr_reader :site, :albums
 
   def path
     File.join(
-      '/export/c1/galleries',
+      '/export',
+      site_code,
+      'galleries',
       albums.to_s,
       fields.join(','),
       '[]/json',
       URI.escape(params.to_json),
       AFFILIATE_ID
     )
+  end
+
+  def site_code
+    codes = {
+      'Femjoy' => 'c1',
+      'Joymii' => 'c2'
+    }
+    codes[site.title]
   end
 
   def fields
@@ -37,9 +47,17 @@ class FemjoyImporter
       s: 'date-desc',
       r: {
         galleries: {
-          s: 'cover2_384x384'
+          s: site_cover
         }
       }
     }
+  end
+
+  def site_cover
+    covers = {
+      'Femjoy' => 'cover2_384x384',
+      'Joymii' => 'r-578x325'
+    }
+    covers[site.title]
   end
 end
