@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -73,6 +74,6 @@ end
 
 require 'rbconfig'
 
-if RbConfig::CONFIG['target_os'] =~ /(?i-mx:bsd|dragonfly)/
+if RbConfig::CONFIG['target_os'].match?(/(?i-mx:bsd|dragonfly)/)
   gem 'rb-kqueue', '>= 0.2'
 end
