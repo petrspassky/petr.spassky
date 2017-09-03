@@ -6,7 +6,7 @@
 
 ## System dependencies
 
-- MacOS for dev
+- MacOS for dev (Freebsd for perverts)
 - Ubuntu for prod
 
 ## Configuration
