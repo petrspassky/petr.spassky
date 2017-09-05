@@ -10,6 +10,7 @@
 # Original configs
 /config/cable.yml
 /config/database.yml
+/config/puma.rb
 
 # Ignore all logfiles and tempfiles.
 /log/*
