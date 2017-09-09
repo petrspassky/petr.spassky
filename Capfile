@@ -20,6 +20,7 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'capistrano/rails'
+require 'new_relic/recipes'
 
 set :services, [:puma]
 require 'capistrano/service'
