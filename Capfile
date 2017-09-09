@@ -6,12 +6,6 @@ require 'capistrano/deploy'
 
 # Load the SCM plugin appropriate to your project:
 #
-# require "capistrano/scm/hg"
-# install_plugin Capistrano::SCM::Hg
-# or
-# require "capistrano/scm/svn"
-# install_plugin Capistrano::SCM::Svn
-# or
 require 'capistrano/scm/git'
 install_plugin Capistrano::SCM::Git
 
@@ -20,12 +14,12 @@ install_plugin Capistrano::SCM::Git
 # For documentation on these, see for example:
 #
 #   https://github.com/capistrano/rvm
-#   https://github.com/capistrano/rbenv
-#   https://github.com/capistrano/chruby
 #   https://github.com/capistrano/bundler
 #   https://github.com/capistrano/rails
-#   https://github.com/capistrano/passenger
 #
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'capistrano/rails'
+
+set :services, [:puma]
+require 'capistrano/service'
