@@ -34,7 +34,8 @@ append :linked_dirs,
        'tmp/pids',
        'tmp/cache',
        'tmp/sockets',
-       'public/system'
+       'public/system',
+       'node_modules'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
