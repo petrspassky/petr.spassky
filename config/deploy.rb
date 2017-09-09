@@ -25,6 +25,7 @@ set :deploy_to, "/home/deploy/#{fetch(:application)}"
 append :linked_files,
        'config/database.yml',
        'config/secrets.yml',
+       'config/newrelic.yml',
        'config/puma.rb'
 
 # Default value for linked_dirs is []
