@@ -50,3 +50,6 @@ set :rvm_type, :user
 
 # Reload puma once fineshed
 after 'deploy:finished', 'service:puma:reload'
+
+# Inform new-relic
+after 'deploy:updated', 'newrelic:notice_deployment'
