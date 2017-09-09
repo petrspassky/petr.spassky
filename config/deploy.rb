@@ -47,3 +47,6 @@ append :linked_dirs,
 
 # RVM settings
 set :rvm_type, :user
+
+# Reload puma once fineshed
+after 'deploy:finished', 'service:puma:reload'
