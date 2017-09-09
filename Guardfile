@@ -74,6 +74,7 @@ end
 guard :rubocop do
   watch(/.+\.rb$/)
   watch(/^Gemfile$/)
+  watch(/^Capfile$/)
   watch(/^Rakefile$/)
   watch(%r{^bin\/})
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
