@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def offset
-    [params[:offset] || 0, 0].max
+    [params[:offset].to_i, 0].max
   end
 
   def limit
