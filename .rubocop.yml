@@ -1,4 +1,11 @@
 AllCops:
+  Include:
+    - '**/*.rb'
+    - '**/*.rake'
+    - 'Rakefile'
+    - 'Capfile'
+    - 'Gemfile'
+    - 'Guardfile'
   Exclude:
     - 'node_modules/**/*'
     - 'bin/webpack-dev-server'
