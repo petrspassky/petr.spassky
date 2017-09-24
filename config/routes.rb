@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     resources :albums, only: :index
   end
 
+  resources :sites, only: :index do
+    resources :albums, only: :index
+  end
+
   root 'albums#index'
 end
