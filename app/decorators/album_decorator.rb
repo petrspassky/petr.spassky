@@ -6,18 +6,16 @@ class AlbumDecorator < Draper::Decorator
   end
 
   def affiliated_url
-    CcbillUrlWrapper.new(
-      affiliate_id: object.affiliate_id,
-      webmaster_account: object.webmaster_account,
-      url: object.url
-    ).perform
+    url_wrapper.wrap(object.url)
   end
 
   def affiliated_site_url
-    CcbillUrlWrapper.new(
-      affiliate_id: object.affiliate_id,
-      webmaster_account: object.webmaster_account,
-      url: object.site_url
-    ).perform
+    url_wrapper.wrap(object.site_url)
+  end
+
+  private
+
+  def url_wrapper
+    UrlWrapperFactory.new(site).build
   end
 end

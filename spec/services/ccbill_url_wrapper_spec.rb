@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CcbillUrlWrapper do
-  describe '#perform' do
+  describe '#wrap' do
     let(:affiliate_id) { '2588917' }
     let(:webmaster_account) { '927141-0000' }
     let(:original_url) do
@@ -11,8 +11,7 @@ RSpec.describe CcbillUrlWrapper do
     subject(:service) do
       described_class.new(
         affiliate_id: affiliate_id,
-        webmaster_account: webmaster_account,
-        url: original_url
+        webmaster_account: webmaster_account
       )
     end
 
@@ -23,7 +22,7 @@ RSpec.describe CcbillUrlWrapper do
                      "PA=#{affiliate_id}&"\
                      "html=#{escaped_url}"
 
-      expect(service.perform).to eq(expected_url)
+      expect(service.wrap(original_url)).to eq(expected_url)
     end
   end
 end
