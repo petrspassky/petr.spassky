@@ -16,7 +16,7 @@ RSpec.describe CcbillUrlWrapper do
     end
 
     it 'wraps link with all the referral params' do
-      escaped_url = URI.escape("#{original_url}?affid=#{affiliate_id}", '?=:/')
+      escaped_url = CGI.escape("#{original_url}?affid=#{affiliate_id}")
       expected_url = 'http://refer.ccbill.com/cgi-bin/clicks.cgi?'\
                      "CA=#{webmaster_account}&"\
                      "PA=#{affiliate_id}&"\

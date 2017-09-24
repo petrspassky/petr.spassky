@@ -25,7 +25,7 @@ class FemjoyImporter
       albums.to_s,
       fields.join(','),
       '[]/json',
-      URI.escape(params.to_json),
+      CGI.escape(params.to_json),
       AFFILIATE_ID
     )
   end
