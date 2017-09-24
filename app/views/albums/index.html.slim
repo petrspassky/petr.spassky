@@ -1,8 +1,2 @@
 = render @albums
-
-nav
-  ul.pagination.pagination-lg.justify-content-center
-    li[class="page-item#{prev_url? ? '' : ' disabled'}"]
-      = link_to '&laquo; Prev'.html_safe, prev_url, class: 'page-link', role: 'button', tabindex: -1
-    li.page-item
-      = link_to 'Next &raquo;'.html_safe, next_url, class: 'page-link', role: 'button'
+= render 'shared/pagination', collection: @albums

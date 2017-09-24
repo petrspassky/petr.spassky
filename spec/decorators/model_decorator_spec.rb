@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ModelDecorator do
+  describe '.collection_decorator_class' do
+    it 'uses paginator' do
+      expect(described_class.collection_decorator_class).to \
+        eq(PaginatingDecorator)
+    end
+  end
+
   describe '#latest_album' do
     let(:album) { FactoryGirl.build_stubbed(:album) }
     let(:model) { instance_double(Model, latest_album: album) }

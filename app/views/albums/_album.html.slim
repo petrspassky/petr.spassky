@@ -3,7 +3,7 @@
     = link_to album.title, album.affiliated_url
     '
     'from
-    = link_to album.site_title, album.affiliated_site_url
+    = link_to album.site_title, site_albums_path(album.site)
   .models
     span
       'Starring:

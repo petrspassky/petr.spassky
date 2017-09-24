@@ -221,7 +221,10 @@ CREATE TABLE sites (
     title character varying NOT NULL,
     url character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    affiliate_program character varying DEFAULT 'ccbill'::character varying,
+    affiliate_id character varying,
+    webmaster_account character varying
 );
 
 
@@ -452,6 +455,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170829165746'),
 ('20170829172225'),
 ('20170829172653'),
-('20170829190355');
+('20170829190355'),
+('20170924073052');
 
 

@@ -27,6 +27,15 @@ guard :bundler do
   files.each { |file| watch(helper.real_path(file)) }
 end
 
+guard :rubocop do
+  watch(/.+\.rb$/)
+  watch(/^Gemfile$/)
+  watch(/^Capfile$/)
+  watch(/^Rakefile$/)
+  watch(%r{^bin\/})
+  watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
+end
+
 # Note: The cmd option is now required due to the increasing number of ways
 #       rspec may be run, below are examples of the most common uses.
 #  * bundler: 'bundle exec rspec'
@@ -69,13 +78,4 @@ guard :rspec, cmd: 'bin/rspec' do
   watch(rails.spec_helper)     { rspec.spec_dir }
   watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
   watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
-end
-
-guard :rubocop do
-  watch(/.+\.rb$/)
-  watch(/^Gemfile$/)
-  watch(/^Capfile$/)
-  watch(/^Rakefile$/)
-  watch(%r{^bin\/})
-  watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
