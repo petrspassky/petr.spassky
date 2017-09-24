@@ -1,0 +1,8 @@
+nav
+  ul.pagination.pagination-lg.justify-content-center
+    - unless collection.first_page?
+      li.page-item
+        = link_to_prev_page collection, '&laquo; Prev'.html_safe, class: 'page-link', role: 'button', tabindex: -1
+    - unless collection.last_page?
+      li.page-item
+        = link_to_next_page collection, 'Next &raquo;'.html_safe, class: 'page-link', role: 'button'

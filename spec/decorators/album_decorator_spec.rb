@@ -3,6 +3,13 @@ require 'rails_helper'
 RSpec.describe AlbumDecorator do
   subject(:decorated) { described_class.new(album) }
 
+  describe '.collection_decorator_class' do
+    it 'uses paginator' do
+      expect(described_class.collection_decorator_class).to \
+        eq(PaginatingDecorator)
+    end
+  end
+
   describe '#date' do
     let(:album) do
       FactoryGirl.build_stubbed(:album, date: '2012-12-12')

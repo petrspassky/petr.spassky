@@ -3,8 +3,7 @@ class ModelsController < ApplicationController
     @models = Model.
               includes(:site_models, albums: :site).
               order(:name).
-              limit(limit).
-              offset(offset).
+              page(page).
               decorate
   end
 end

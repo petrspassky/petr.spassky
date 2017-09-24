@@ -3,18 +3,21 @@ class AlbumsController < ApplicationController
     @albums = base_scope.
               includes(:site, :site_models).
               order(date: :desc).
-              limit(limit).
-              offset(offset).
+              page(page).
               decorate
   end
 
   private
 
   def base_scope
-    model&.albums || Album.all
+    model&.albums || site&.albums || Album.all
   end
 
   def model
     @model = Model.find_by(id: params[:model_id])
+  end
+
+  def site
+    @site = Site.find_by(id: params[:site_id])
   end
 end

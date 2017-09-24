@@ -1,6 +1,10 @@
 class AlbumDecorator < Draper::Decorator
   delegate_all
 
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
+
   def date
     object.date.to_s(:long)
   end

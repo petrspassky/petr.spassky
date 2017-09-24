@@ -3,11 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def offset
-    [params[:offset].to_i, 0].max
-  end
-
-  def limit
-    params[:limit] || 20
+  def page
+    [params[:page].to_i, 0].max
   end
 end
