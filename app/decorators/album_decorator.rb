@@ -6,7 +6,7 @@ class AlbumDecorator < Draper::Decorator
   end
 
   def date
-    object.date.to_s(:long)
+    object.date&.to_s(:long)
   end
 
   def affiliated_url

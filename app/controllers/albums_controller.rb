@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   def index
     @albums = base_scope.
               includes(:site, :site_models).
-              order(date: :desc).
+              order('date IS NULL, date DESC').
               page(page).
               decorate
   end
